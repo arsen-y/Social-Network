@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import s from "./ProfileInfo.module.css"
 
 const ProfileStatus = props => {
 
@@ -11,7 +12,7 @@ const ProfileStatus = props => {
 
     const deactivateEditMode = () => {
         setEditMode(false)
-        /props.updateStatus(status)
+        props.updateStatus(status)
     }
 
     const onStatusChange = e => {
