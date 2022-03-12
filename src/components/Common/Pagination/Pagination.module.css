@@ -1,3 +1,14 @@
-.selectedPage {
+.paginaion {
+    margin: 10px;
+}
+
+.pageNumber {
+    padding: 2px;
+    border: 1px solid grey;
+    cursor: hand;
+}
+
+.pageNumber.selectedPage {
     font-weight: bold;
+    border-color: black;
 }
