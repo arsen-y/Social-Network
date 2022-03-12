@@ -14,6 +14,8 @@ import Login from './components/Login/Login';
 import { connect } from 'react-redux';
 import { initializeApp } from './redux/app-reducer';
 import Preloader from './components/Common/Preloader/Preloader';
+import store from './redux/redux-store'
+import { Provider } from 'react-redux';
 import './App.css'
 
 class App extends React.Component {
@@ -58,7 +60,17 @@ const mapStateToProps = state => ({
   initialized: state.app.initialized
 })
 
-export default connect(mapStateToProps, { initializeApp })(App);
+let AppContainer = connect(mapStateToProps, { initializeApp })(App);
 
+const MainApp = props => {
+  return (
+    <React.StrictMode>
+    <Provider store={store}>
+      <AppContainer />
+    </Provider>
+  </React.StrictMode>
+  )
+}
 
+export default MainApp
 
