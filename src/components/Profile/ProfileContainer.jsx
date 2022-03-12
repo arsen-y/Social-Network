@@ -19,13 +19,13 @@ class ProfileContainer extends React.Component {
       }
     }
 
-    this.props.getUserProfile(this.props.userId)
-    this.props.getStatus(this.props.userId)
+    this.props.getUserProfile(userId)
+    this.props.getStatus(userId)
   }
 
   render() {
 
-    return <Profile {...this.props} profile={this.props.profile} status={this.props.status} updateStatus={this.props.updateStatus} />
+    return <Profile profile={this.props.profile} status={this.props.status} updateStatus={this.props.updateStatus}  {...this.props} />
   }
 
 }
@@ -34,7 +34,7 @@ const withUserId = Component => {
 
   let RedirectComponent = (props) => {
     const { userId } = useParams();
-    console.log(userId)
+
     return (
       <Component {...props} userId={userId} />
     )

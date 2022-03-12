@@ -1,10 +1,9 @@
 import React from 'react'
 import s from "./Pagination.module.css"
-import { NavLink } from 'react-router-dom'
 
-let Pagination = (props) => {
+let Pagination = ({currentPage, totalUsersCount, pageSize, onPageChanged}) => {
 
-    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
+    let pagesCount = Math.ceil(totalUsersCount / pageSize)
 
     let pages = []
 
@@ -17,7 +16,7 @@ let Pagination = (props) => {
 
             {
                 pages.map(p => {
-                    return <span onClick={() => { props.onPageChanged(p) }} className={props.currentPage === p && s.selectedPage}>{p} </span>
+                    return <span onClick={() => { onPageChanged(p) }} className={currentPage === p && s.selectedPage}>{p} </span>
                 })
             }
 
