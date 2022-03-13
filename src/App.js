@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react'
 import {
-  BrowserRouter,
+  HashRouter,
   Routes,
   Route
 } from "react-router-dom";
@@ -36,8 +36,8 @@ class App extends React.Component {
     let Dl = withSuspense(DialogsContainer)
 
     return (
-      <BrowserRouter>
-
+      //<BrowserRouter basename={process.env.PUBLIC_URL}>
+      <HashRouter basename={process.env.PUBLIC_URL}>
         <div className='app-wrapper'>
 
           <HeaderContainer />
@@ -57,7 +57,7 @@ class App extends React.Component {
 
         </div>
 
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 }

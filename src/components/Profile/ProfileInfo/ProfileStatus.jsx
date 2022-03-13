@@ -28,7 +28,7 @@ const ProfileStatus = props => {
         {!editMode ?
 
             <div>
-                <span onClick={activateEditMode}>{status || '====='}</span>
+                <b>Status</b>: <span onClick={activateEditMode}>{status || '====='}</span>
             </div>
 
             :
