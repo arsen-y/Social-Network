@@ -22,8 +22,10 @@ const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto, savePr
   }
 
   const onSubmit = formData => {
-    saveProfile(formData)
-    setEditMode(false)
+    saveProfile(formData).then(() => {
+      setEditMode(false)
+    })
+    
   }
 
 
@@ -58,7 +60,7 @@ const ProfileData = ({ profile, isOwner, goToEditMode }) => {
       <div><b>About me</b>: {profile.aboutMe} </div>
 
       <div><b>Contacts</b>: {Object.keys(profile.contacts).map(key => {
-        return <Contact contactTitle={key} contactValue={profile.contacts[key]} />
+        return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]} />
       })} </div>
       {isOwner && <div><button onClick={goToEditMode}>edit</button></div>}
     </div>

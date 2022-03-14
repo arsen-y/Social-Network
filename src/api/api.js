@@ -29,35 +29,35 @@ export const usersAPI = {
 
 export const ProfileAPI = {
     getProfile(userId) {
-        return instance.get(`profile/${userId}`)
+        return instance.get(`profile/${userId}`).catch(error => ({message: error.message}));
     },
     getStatus(userId) {
-        return instance.get(`profile/status/${userId}`)
+        return instance.get(`profile/status/${userId}`).catch(error => ({message: error.message}));
     }, 
     updateStatus(status) {
-        return instance.put(`profile/status`, { status: status })
+        return instance.put(`profile/status`, { status: status }).catch(error => ({message: error.message}));
     },
     savePhoto(file) {
         const formData = new FormData()
         formData.append("image", file)
         return instance.put(`profile/photo`, formData, {
             headers: {'Content-Type': 'multipart/form-data'}
-        })
+        }).catch(error => ({message: error.message}));
     },
     saveProfile(profile) {
-        return instance.put(`profile`, { profile })
+        return instance.put(`profile`, { profile }).catch(error => ({message: error.message}));
     }
 }
 
 export const authAPI = {
     me() {
-        return instance.get(`auth/me`)
+        return instance.get(`auth/me`).catch(error => ({message: error.message}));
     }, 
     login(email, password, rememberMe = false) {
-        return instance.post(`auth/login`, { email, password, rememberMe })
+        return instance.post(`auth/login`, { email, password, rememberMe }).catch(error => ({message: error.message}));
     }, 
     logout() {
-        return instance.delete(`auth/login`)
+        return instance.delete(`auth/login`).catch(error => ({message: error.message}));
     }
 
 }
